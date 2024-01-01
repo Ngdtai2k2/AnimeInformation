@@ -18,6 +18,7 @@ const AnimeCard = ({ link, keyLink, sourceImage, score, scoredBy, animeTitle }) 
           variant="top"
           src={sourceImage}
           className="card-image"
+          alt=""
         />
         <Card.Body className="my-0 py-2 mx-0 px-0">
           <Card.Title className="my-0 card-text d-flex justify-content-start mb-2 fw-bold">

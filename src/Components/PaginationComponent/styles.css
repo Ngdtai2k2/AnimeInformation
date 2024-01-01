@@ -1,0 +1,26 @@
+/* custom class boostrap */
+.page-item,
+.page-link {
+  box-shadow: none;
+}
+
+.page-item {
+  margin: 5px;
+}
+
+.page-link {
+  color: gray;
+}
+
+.page-link:hover {
+  color: black;
+}
+
+.active .page-link {
+  background-color: gray !important;
+  border-color: gray !important;
+}
+
+.active .page-link:hover {
+  color: white;
+}

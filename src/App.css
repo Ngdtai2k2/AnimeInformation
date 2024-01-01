@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.star-icon {
+    color: #ffc200;
+}
+
+.scored-by-text {
+    font-size: 12px;
+    font-style: italic;
+}

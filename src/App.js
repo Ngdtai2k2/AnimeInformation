@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import AnimeItem from "./Components/AnimeItem";
+import AnimeDetails from "./Components/AnimeDetails";
 import Gallery from "./Components/Gallery";
 import Homepage from "./Components/HomePage";
 import NavigationBar from "./Components/NavigationBar";
@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/anime/:id" element={<AnimeItem />} />
+          <Route path="/anime/:id" element={<AnimeDetails />} />
           <Route path="/character/:id" element={<Gallery />} />
         </Routes>
       </BrowserRouter>

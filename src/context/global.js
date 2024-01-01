@@ -10,6 +10,7 @@ const GET_POPULAR_ANIME = "GET_POPULAR_ANIME";
 const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
 const GET_PICTURES = "GET_PICTURES";
+const GET_TOP_ANIME_FAVORITE = "GET_TOP_ANIME_FAVORITE";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -46,13 +47,15 @@ const reducer = (state, action) => {
       };
     case GET_PICTURES:
       return { ...state, pictures: action.payload, loading: false };
+    case GET_TOP_ANIME_FAVORITE:
+      return { ...state, favorites: action.payload, loading: false };
     default:
       return state;
   }
 };
 
 export const GlobalContextProvider = ({ children }) => {
-  const intialState = {
+  const initialState = {
     popularAnime: [],
     upcomingAnime: [],
     airingAnime: [],
@@ -62,9 +65,10 @@ export const GlobalContextProvider = ({ children }) => {
     loading: false,
     pagination: null,
     searchQuery: "",
+    favorites: [],
   };
 
-  const [state, dispatch] = useReducer(reducer, intialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [search, setSearch] = React.useState("");
 
   const handleChange = (e) => {
@@ -78,7 +82,7 @@ export const GlobalContextProvider = ({ children }) => {
     e.preventDefault();
     if (search) {
       searchAnime(search);
-      state.isSearch = true;  
+      state.isSearch = true;
     } else {
       state.isSearch = false;
       alert("Please enter a search term");
@@ -154,9 +158,14 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_PICTURES, payload: data.data });
   };
 
-  React.useEffect(() => {
-    getPopularAnime();
-  }, []);
+  const getTopAnimeFavorite = async () => {
+    dispatch({ type: LOADING });
+    const response = await fetch(
+      `${baseUrl}/top/anime?filter=favorite`
+    );
+    const data = await response.json();
+    dispatch({ type: GET_TOP_ANIME_FAVORITE, payload: data.data });
+  };;
 
   return (
     <GlobalContext.Provider
@@ -170,6 +179,7 @@ export const GlobalContextProvider = ({ children }) => {
         getUpcomingAnime,
         getAiringAnime,
         getAnimePictures,
+        getTopAnimeFavorite,
       }}
     >
       {children}

@@ -7,16 +7,15 @@ import { useGlobalContext } from "../../context/global";
 import "./styles.css";
 
 function Sidebar() {
-  const { popularAnime } = useGlobalContext();
-
-  const sorted = popularAnime?.sort((a, b) => {
+  const { favorites } = useGlobalContext();
+  const sorted = favorites?.sort((a, b) => {
     return b.score - a.score;
   });
 
   return (
     <>
       <Col xs="12" md="3">
-        <h4 className="d-flex justify-content-center">Top 5 Popular</h4>
+        <h4 className="d-flex justify-content-center">Top 5 favorites</h4>
         {sorted?.slice(0, 5).map((anime) => {
           return (
             <Link

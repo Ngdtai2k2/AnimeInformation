@@ -18,6 +18,8 @@ function Homepage() {
     handleChange,
     getUpcomingAnime,
     getAiringAnime,
+    getTopAnimeFavorite,
+    getPopularAnime
   } = useGlobalContext();
 
   const [rendered, setRendered] = React.useState("popular");
@@ -43,6 +45,11 @@ function Homepage() {
       : "Upcoming Anime"
     : "Result search";
 
+    React.useEffect(() => {
+      getTopAnimeFavorite();
+      getPopularAnime();
+    }, []);
+    
   return (
     <>
       <div className="border-bottom">
@@ -99,9 +106,7 @@ function Homepage() {
         </div>
         <h5 className="mt-0 mb-3 mb-md-4">{title}</h5>
       </div>
-      <div className="container-fluid">
-        {switchComponent()}
-      </div>
+      <div className="container-fluid">{switchComponent()}</div>
     </>
   );
 }

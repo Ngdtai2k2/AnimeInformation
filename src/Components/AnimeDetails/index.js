@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 
-function AnimeItem() {
+function AnimeDetails() {
     const {id} = useParams()
 
     //state
@@ -210,4 +210,4 @@ const AnimeItemStyled = styled.div`
     }
 `;
 
-export default AnimeItem
+export default AnimeDetails;

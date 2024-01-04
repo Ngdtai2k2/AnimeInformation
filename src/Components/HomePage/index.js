@@ -1,7 +1,7 @@
 import { Button, Form } from "react-bootstrap";
 import { FaFireFlameCurved, FaWandMagicSparkles } from "react-icons/fa6";
 import { HiOutlineSignal } from "react-icons/hi2";
-import React from "react";
+import React, { useEffect } from "react";
 
 import Airing from "../Airing";
 import Popular from "../Popular";
@@ -45,14 +45,15 @@ function Homepage() {
       : "Upcoming Anime"
     : "Result search";
 
-    React.useEffect(() => {
+    useEffect(() => {
       getTopAnimeFavorite();
       getPopularAnime();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
   return (
     <>
-      <div className="border-bottom">
+      <div className="border-bottom mt-4 mt-md-3 pt-5">
         <div className="row my-3 my-md-4">
           <div className="col-12 col-md-6 d-flex justify-content-center mb-2 mb-md-0">
             <Button

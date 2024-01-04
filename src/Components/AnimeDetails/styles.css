@@ -1,0 +1,18 @@
+.image-detail {
+    object-fit: cover;
+    width: 250px;
+    height: 100%;
+}
+
+@media only screen and (max-width: 600px) { 
+    .image-detail-wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-detail {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+}
